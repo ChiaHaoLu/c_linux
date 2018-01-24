@@ -1,7 +1,6 @@
-//#ifndef CHLU_API
-//#define CHLU_API
+#ifndef CHLU_API
+#define CHLU_API
 #include "chlu_API_trace.h"
-//#endif
 
 ml_sample::ml_sample() :
 	FuncTime(0),
@@ -47,17 +46,6 @@ void api_param::init_api_param() {
 	strcpy(_data_type, "NULL");
 }
 
-void api_param::set_value(GLchar data) { _char = data; }
-void api_param::set_value(GLbyte data) { _byte = data; }
-void api_param::set_value(GLshort data) {_short = data; }
-void api_param::set_value(GLint data) { _int = data; }
-void api_param::set_value(GLuint data) { _uint = data; }
-void api_param::set_value(GLushort data) { _ushort = data; }
-void api_param::set_value(GLfloat data) { _float = data; }
-void api_param::set_value(GLdouble data) { _double = data; }
-void api_param::set_value(GLint64 data) { _int_64 = data; }
-void api_param::set_value(GLuint64 data) { _uint64 = data; }
-
 GLchar api_param::get_char() { return _char; }
 GLbyte api_param::get_byte() { return _byte; }
 GLshort api_param::get_short() { return _short; }
@@ -71,3 +59,5 @@ GLuint64 api_param::get_uint64() { return _uint64; }
 
 void api_param::set_type(string type_name) { strcpy(_data_type,type_name.c_str()); }
 string api_param::get_type() { string ret_str; ret_str = _data_type; return ret_str; }
+
+#endif

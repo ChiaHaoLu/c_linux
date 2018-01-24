@@ -1,28 +1,13 @@
+#ifndef CHLU_TRACE_H
+#define CHLU_TRACE_H
 #include <stdio.h>
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <typeinfo>
 #include "GLDefines.h"
 
 using namespace std;
-
-//type count = 14
-const char* GL_type[] = {"GLenum",      //unsigned int
-                        "GLboolean",    //unsigned char
-                        "GLbitfield",   //unsigned int
-                        "GLbyte",       //signed char
-                        "GLshort",      //short
-                        "GLint",        //int
-                        "GLubyte",      //unsigned char
-                        "GLushort",     //unsigned short
-                        "GLuint",       //unsigned int
-                        "GLsizei",      //int
-                        "GLfloat",      //float
-                        "GLdouble",     //double
-                        "GLhandle",     //unsigned int
-                        "GLchar"        //unsigned char
-                        }
-const char* GL_type_format[]= {"%u,", "%hhu,", "%u,", "%hhd,", "%hd", "%d", "%hhu", "%hu,", "%u,", "%d,", "%f,", "%f,", "%u,", "%hhu,"}
 
 class api_param
 {
@@ -30,16 +15,8 @@ public:
 	api_param();
 	~api_param();
 	void init_api_param();
-	void set_value(GLchar); //unsigned char
-	void set_value(GLbyte); //signed char
-	void set_value(GLshort);
-	void set_value(GLint);
-	void set_value(GLuint);
-	void set_value(GLushort);
-	void set_value(GLfloat);
-	void set_value(GLdouble);
-	void set_value(GLint64);
-	void set_value(GLuint64);
+
+	template <typename T> void set_value(T);
 
 	GLchar get_char();
 	GLbyte get_byte();
@@ -84,3 +61,5 @@ public:
 	unsigned int system_time;
 };
 #define BUF_SIZE 256
+#include "chlu_API_trace.hpp"
+#endif
